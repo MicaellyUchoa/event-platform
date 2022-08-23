@@ -1,3 +1,3 @@
 export function Video() {
-  return <h1>Video</h1>;
+  return <div className="sm:w-full md:w-full h-36 bg-red-800"></div>;
 }

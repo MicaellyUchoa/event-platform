@@ -7,8 +7,10 @@ export function Event() {
   return (
     <>
       <Header />
-      <Video />
-      <Sidebar />
+      <main className="sm:block md:flex">
+        <Video />
+        <Sidebar />
+      </main>
       <Lesson />
     </>
   );
