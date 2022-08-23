@@ -1,13 +1,7 @@
 import { CheckCircle, Lock } from "phosphor-react";
+import ILesson from "../interfaces/ILesson";
 
-interface LessonProps {
-  title: string;
-  slug: string;
-  availableAt: Date;
-  type: "live" | "class";
-}
-
-export function Lesson(props: LessonProps) {
+export function Lesson(props: ILesson) {
   const isLessonAvailable = false;
 
   return (
@@ -16,12 +10,12 @@ export function Lesson(props: LessonProps) {
       <div className="rounded border border-gray-500 p-4 mt-2">
         <header className="flex items-center justify-between">
           {isLessonAvailable ? (
-            <span className="text-sm text-blue-500 font-medium flex gap-2">
+            <span className="text-sm text-blue-500 font-medium flex items-center gap-2">
               <CheckCircle size={20} />
               Conteúdo liberado
             </span>
           ) : (
-            <span className="text-sm text-blue-500 font-medium flex gap-2">
+            <span className="text-sm text-orange-500 font-medium flex items-center gap-2">
               <Lock size={20} />
               Em breve
             </span>
