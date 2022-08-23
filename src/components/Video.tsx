@@ -1,3 +1,7 @@
 export function Video() {
-  return <div className="sm:w-full md:w-full h-36 bg-red-800"></div>;
+  return (
+    <div className="sm:w-full md:w-full bg-slate-500 flex justify-center items-center">
+      <p className="text-4xl">Video</p>
+    </div>
+  );
 }
