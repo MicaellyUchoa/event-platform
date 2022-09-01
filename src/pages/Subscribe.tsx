@@ -1,8 +1,8 @@
 import Logo from "../components/Logo";
 
-export function Home() {
+export function Subscribe() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen items-center bg-blur bg-cover bg-no-repeat">
       <main className="sm:block md:flex md:flex-1 p-12 md:p-24 gap-20 justify-between">
         <div className="max-w-[624px]">
           <Logo />
@@ -23,6 +23,7 @@ export function Home() {
           <button className="bg-green-500 uppercase p-4 rounded-sm font-bold">Garantir minha vaga</button>
         </div>
       </main>
+      <img src="/src/assets/code-mockup.png" className="mt-10" alt="" />
     </div>
   );
 }
