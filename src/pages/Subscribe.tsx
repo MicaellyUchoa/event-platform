@@ -1,6 +1,36 @@
+import { gql, useMutation } from "@apollo/client";
+import { useState, FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import Logo from "../components/Logo";
 
+const CREATE_SUBSCRIBE_MUTATION = gql`
+  mutation CreateSubscriber($name: String!, $email: String!) {
+    createSubscriber(data: { name: $name, email: $email }) {
+      id
+    }
+  }
+`;
+
 export function Subscribe() {
+  const navigate = useNavigate();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  const [createSubscriber] = useMutation(CREATE_SUBSCRIBE_MUTATION);
+
+  async function handleSubscribe(event: FormEvent) {
+    event.preventDefault();
+
+    await createSubscriber({
+      variables: {
+        name,
+        email,
+      },
+    });
+
+    navigate("/event");
+  }
+
   return (
     <div className="flex flex-col min-h-screen items-center bg-blur bg-cover bg-no-repeat">
       <main className="sm:block md:flex md:flex-1 p-12 md:p-24 gap-20 justify-between">
@@ -17,16 +47,18 @@ export function Subscribe() {
         </div>
         <div className="bg-gray-700 border border-gray-500 p-5 max-h-[320px] min-w-[391px] flex flex-col">
           <strong className="text-2xl mb-5">Inscreva-se gratuitamente</strong>
-          <form className="w-full flex flex-col" action="">
+          <form className="w-full flex flex-col" onSubmit={handleSubscribe}>
             <input
               type="text"
               className="bg-gray-900 p-3 mb-2 rounded-md outline-none"
               placeholder="Seu nome completo"
+              onChange={(event) => setName(event?.target.value)}
             />
             <input
               type="text"
               className="bg-gray-900 p-3 mb-4 rounded-md outline-none"
               placeholder="Digite seu email"
+              onChange={(event) => setEmail(event?.target.value)}
             />
             <button className="bg-green-500 hover:bg-green-700  transition-colors uppercase p-4 rounded-sm font-bold">
               Garantir minha vaga
