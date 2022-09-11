@@ -10,6 +10,6 @@ Inscrição no evento e acesso ás aulas.
 - Codegen
 - TailwindCSS
 
---
+---
 
  [Link do deploy](https://event-platform-gold-chi.vercel.app/) 🚀
